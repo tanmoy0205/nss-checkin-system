@@ -9,6 +9,7 @@ export async function GET() {
   }
 
   const userId = (session.user as any).id;
+  if (!supabaseAdmin) return NextResponse.json({ ok: false }, { status: 500 });
 
   try {
     const { data: regs, error } = await supabaseAdmin
