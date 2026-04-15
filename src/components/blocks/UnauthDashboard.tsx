@@ -9,7 +9,7 @@ import {
   GalleryContainer,
 } from "@/components/blocks/animated-gallery";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Heart, Users, Calendar, Clock } from "lucide-react";
+import { ArrowRight, Heart, Users, Calendar, Clock, Instagram, Linkedin, Globe } from "lucide-react";
 import Link from "next/link";
 import { TheInfiniteGrid } from "@/components/ui/the-infinite-grid";
 import { GridBody, DraggableContainer, GridItem } from "@/components/ui/infinite-drag-scroll";
@@ -180,6 +180,45 @@ export const UnauthDashboard = ({ impactImages = [] }: UnauthDashboardProps) => 
           </ContainerAnimated>
         </ContainerStagger>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-50 py-20 border-t border-gray-100">
+        <div className="mx-auto max-w-7xl px-4 text-center">
+          <div className="inline-flex h-24 w-24 bg-white rounded-3xl items-center justify-center mb-8 shadow-xl border border-gray-100 p-2">
+            <img src="/nss.png" alt="NSS Logo" className="h-full w-full object-contain" />
+          </div>
+          <h4 className="text-2xl font-black text-gray-900 tracking-tight uppercase mb-4">NSS INSPIRIA UNIT</h4>
+          <p className="text-[10px] text-gray-400 font-black uppercase tracking-[0.4em] mb-12">Inspiria Knowledge Campus • Built for Service</p>
+          <div className="flex flex-col md:flex-row justify-center items-center gap-12 mb-16">
+            <div className="space-y-6">
+              <h5 className="font-black text-gray-900 text-sm uppercase tracking-widest">Platform</h5>
+              <ul className="flex gap-8">
+                <li><Link href="/dashboard" className="text-gray-500 hover:text-nss-blue font-bold transition-colors">Home</Link></li>
+                <li><Link href="/checkin" className="text-gray-500 hover:text-nss-blue font-bold transition-colors">Check-in</Link></li>
+                <li><Link href="/events" className="text-gray-500 hover:text-nss-blue font-bold transition-colors">Drives</Link></li>
+              </ul>
+            </div>
+            <div className="h-12 w-px bg-gray-100 hidden md:block" />
+            <div className="space-y-6">
+              <h5 className="font-black text-gray-900 text-sm uppercase tracking-widest text-center md:text-left">Socials</h5>
+              <div className="flex gap-4 justify-center">
+                <a href="#" className="h-10 w-10 bg-white rounded-xl border border-gray-100 flex items-center justify-center text-gray-400 hover:text-nss-blue hover:border-nss-blue transition-all shadow-sm"><Instagram size={18} /></a>
+                <a href="#" className="h-10 w-10 bg-white rounded-xl border border-gray-100 flex items-center justify-center text-gray-400 hover:text-nss-blue hover:border-nss-blue transition-all shadow-sm"><Linkedin size={18} /></a>
+                <a href="#" className="h-10 w-10 bg-white rounded-xl border border-gray-100 flex items-center justify-center text-gray-400 hover:text-nss-blue hover:border-nss-blue transition-all shadow-sm"><Globe size={18} /></a>
+              </div>
+            </div>
+          </div>
+          <div className="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
+            <p className="text-gray-400 text-[10px] font-black uppercase tracking-[0.4em]">© 2023 NSS UNIT • NOT ME BUT YOU</p>
+            <div className="flex items-center gap-3">
+              <div className="h-2 w-2 rounded-full bg-nss-blue animate-pulse" />
+              <div className="h-2 w-2 rounded-full bg-nss-red animate-pulse delay-75" />
+              <div className="h-2 w-2 rounded-full bg-inspiria-yellow animate-pulse delay-150" />
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
+

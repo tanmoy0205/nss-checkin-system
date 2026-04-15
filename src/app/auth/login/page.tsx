@@ -27,7 +27,11 @@ export default function LoginPage() {
       });
 
       if (res?.error) {
-        setError("Invalid email or password");
+        if (res.error === "CredentialsSignin") {
+          setError("Invalid email or password. Note: If you signed up with Google, please use the Google login button instead.");
+        } else {
+          setError("Invalid email or password");
+        }
       } else {
         router.push("/dashboard");
       }

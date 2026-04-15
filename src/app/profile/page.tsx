@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { User, CreditCard, CheckCircle, Clock, Award, Calendar, Phone, BookOpen, GraduationCap, Edit2, Save, X, ShieldCheck, XCircle, Heart, UserCircle, Fingerprint, MapPin, ArrowRight } from "lucide-react";
+import { ProfileImage } from "@/components/ui/ProfileImage";
 
 export default function ProfilePage() {
   const { data: session } = useSession();
@@ -119,20 +120,12 @@ export default function ProfilePage() {
               <div className="px-10 pb-12">
                 <div className="relative -mt-20 mb-10">
                   <div className="h-40 w-40 bg-white rounded-[2.5rem] p-2 shadow-2xl mx-auto border-4 border-white overflow-hidden group">
-                    {user?.profile_picture ? (
-                      <img 
-                        src={user.profile_picture} 
-                        alt={profileData.name} 
-                        className="h-full w-full object-cover rounded-4xl"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(profileData.name)}&background=random`;
-                        }}
-                      />
-                    ) : (
-                      <div className="h-full w-full bg-gray-100 rounded-4xl flex items-center justify-center text-gray-400">
-                        <User size={64} />
-                      </div>
-                    )}
+                    <ProfileImage 
+                      src={user?.profile_picture} 
+                      alt={profileData.name} 
+                      className="h-full w-full object-cover rounded-4xl" 
+                      size={64}
+                    />
                   </div>
                 </div>
                 

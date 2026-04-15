@@ -29,6 +29,7 @@ import {
   Copy
 } from "lucide-react";
 import { useSession } from "next-auth/react";
+import { ProfileImage } from "@/components/ui/ProfileImage";
 
 export default function AdminEvents() {
   const router = useRouter();
@@ -687,21 +688,13 @@ export default function AdminEvents() {
                               <td className="py-5 px-8">
                                 <div className="flex items-center gap-3">
                                   <div className="h-10 w-10 bg-gray-100 rounded-xl overflow-hidden shadow-sm shrink-0">
-                                    {reg.users?.profile_picture ? (
-                                        <img 
-                                          src={reg.users.profile_picture} 
-                                          alt={reg.users.name}
-                                          className="h-full w-full object-cover" 
-                                          onError={(e) => {
-                                            (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(reg.users.name)}&background=random`;
-                                          }}
-                                        />
-                                      ) : (
-                                      <div className="h-full w-full flex items-center justify-center text-gray-300">
-                                        <Users size={16} />
-                                      </div>
-                                    )}
-                                  </div>
+                                      <ProfileImage 
+                                        src={reg.users?.profile_picture} 
+                                        alt={reg.users?.name}
+                                        className="h-full w-full object-cover" 
+                                        size={16}
+                                      />
+                                    </div>
                                   <div className="flex flex-col min-w-0">
                                     <span className="text-xs font-black text-gray-900 tracking-tight">{reg.users?.name}</span>
                                     <span className="text-[8px] font-black text-gray-400 uppercase tracking-widest truncate">{reg.users?.email}</span>

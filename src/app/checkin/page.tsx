@@ -344,15 +344,10 @@ function CheckInContent() {
             )}
           </div>
         </div>
-        
-        <div className="mt-12 text-center flex items-center justify-center gap-3 text-gray-400 font-black text-[10px] uppercase tracking-[0.4em]">
-          <img src="/nss.png" alt="NSS Logo" className="h-4 w-4 object-contain" />
-          NSS Inspiria • Built for the Community
-        </div>
       </main>
     </div>
   );
-}
+};
 
 export default function CheckInPage() {
   return (

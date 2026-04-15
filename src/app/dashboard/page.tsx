@@ -6,6 +6,7 @@ import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { TheInfiniteGrid } from "@/components/ui/the-infinite-grid";
 import { UnauthDashboard } from "@/components/blocks/UnauthDashboard";
+import { ProfileImage } from "@/components/ui/ProfileImage";
 
 const timeAgo = (date: string) => {
   const seconds = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
@@ -308,19 +309,13 @@ export default async function DashboardPage() {
                         const profilePic = user?.profile_picture;
                         const name = user?.name || "Volunteer";
                         
-                        return profilePic ? (
-                          <img 
+                        return (
+                          <ProfileImage 
                             src={profilePic} 
                             alt={name} 
-                            className="h-full w-full object-cover"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random`;
-                            }}
+                            className="h-full w-full object-cover" 
+                            size={32}
                           />
-                        ) : (
-                          <div className="h-full w-full bg-gray-200 flex items-center justify-center text-gray-400">
-                            <User size={32} />
-                          </div>
                         );
                       })()}
                     </div>
@@ -373,15 +368,12 @@ export default async function DashboardPage() {
                   ))}
                 </div>
                 
-                <div className="mt-20 pt-16 border-t border-white/10 text-center">
+                  <div className="mt-20 pt-16 border-t border-white/10 text-center">
                   <div className="inline-flex h-24 w-24 rounded-4xl bg-white items-center justify-center mb-8 shadow-2xl border border-white/10 p-4">
                     <img src="/nss.png" alt="NSS Logo" className="w-full h-full object-contain" />
                   </div>
                   <h4 className="text-2xl font-black text-white mb-3 tracking-tight uppercase">COLLECTIVE EFFORT</h4>
-                  <p className="text-[10px] text-blue-300/50 font-black uppercase tracking-[0.4em] mb-8">NSS INSPIRIA UNIT</p>
-                  <p className="text-blue-100/70 leading-relaxed font-medium text-sm">
-                    Real-time contribution from our dedicated volunteers across different social domains.
-                  </p>
+                  <p className="text-[10px] text-blue-300/50 font-black uppercase tracking-[0.4em]">NSS INSPIRIA UNIT</p>
                 </div>
               </div>
             </div>

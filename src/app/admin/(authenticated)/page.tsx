@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { ProfileImage } from "@/components/ui/ProfileImage";
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -215,18 +216,12 @@ export default function AdminDashboard() {
                 <div key={v.id} className="flex items-center gap-6 p-6 bg-white/5 border border-white/5 rounded-[2.5rem] hover:bg-white/10 transition-all group">
                   <div className="relative shrink-0">
                     <div className="h-16 w-16 bg-nss-blue rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-xl border-2 border-white/10 overflow-hidden group-hover:scale-110 transition-transform">
-                      {v.profile_picture ? (
-                        <img 
-                          src={v.profile_picture} 
-                          alt={v.name}
-                          className="h-full w-full object-cover" 
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(v.name)}&background=random`;
-                          }}
-                        />
-                      ) : (
-                        <span className="text-xl font-black">{i + 1}</span>
-                      )}
+                      <ProfileImage 
+                        src={v.profile_picture} 
+                        alt={v.name}
+                        className="h-full w-full object-cover" 
+                        size={32}
+                      />
                     </div>
                     {i === 0 && <Star size={20} className="absolute -top-3 -right-3 text-inspiria-yellow fill-inspiria-yellow animate-pulse drop-shadow-[0_0_10px_rgba(251,191,36,0.5)]" />}
                   </div>

@@ -35,7 +35,14 @@ export const authOptions = {
           .eq('email', email)
           .single();
 
-        if (!user || user.password !== password) return null;
+        if (!user) return null;
+        
+        if (user.provider === 'google') {
+          console.warn("Login attempt with password for Google-only account:", email);
+          return null;
+        }
+        
+        if (user.password !== password) return null;
         return { id: user.id, name: user.name ?? "", email: user.email, role: user.role };
       },
     }),
@@ -133,7 +140,9 @@ export const authOptions = {
   },
   pages: {
     signIn: "/auth/login",
+    error: "/auth/login",
   },
+  trustHost: true,
   secret: process.env.AUTH_SECRET || "development-secret-key",
 } satisfies NextAuthConfig;
 
