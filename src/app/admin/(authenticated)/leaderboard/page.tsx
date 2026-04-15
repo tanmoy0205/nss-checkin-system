@@ -13,6 +13,7 @@ import {
   Clock
 } from "lucide-react";
 import Link from "next/link";
+import { ProfileImage } from "@/components/ui/ProfileImage";
 
 export default function AdminLeaderboard() {
   const [volunteers, setVolunteers] = useState<any[]>([]);
@@ -86,18 +87,12 @@ export default function AdminLeaderboard() {
             <div className="absolute -top-12 left-1/2 -translate-x-1/2">
               <div className="relative">
                 <div className="h-28 w-28 rounded-4xl bg-gray-100 border-4 border-white shadow-2xl overflow-hidden">
-                  {topThree[1].profile_picture ? (
-                    <img 
-                      src={topThree[1].profile_picture} 
-                      alt={topThree[1].name}
-                      className="h-full w-full object-cover" 
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(topThree[1].name)}&background=random`;
-                      }}
-                    />
-                  ) : (
-                    <div className="h-full w-full flex items-center justify-center text-gray-300"><UserIcon size={32} /></div>
-                  )}
+                  <ProfileImage 
+                    src={topThree[1].profile_picture} 
+                    alt={topThree[1].name}
+                    className="h-full w-full object-cover" 
+                    size={32}
+                  />
                 </div>
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 h-10 w-10 bg-gray-200 rounded-xl flex items-center justify-center border-4 border-white shadow-xl">
                   <Medal size={20} className="text-gray-500" />
@@ -121,18 +116,12 @@ export default function AdminLeaderboard() {
             <div className="absolute -top-16 left-1/2 -translate-x-1/2 z-10">
               <div className="relative">
                 <div className="h-36 w-32 rounded-[2.5rem] bg-nss-blue border-4 border-white shadow-2xl overflow-hidden">
-                  {topThree[0].profile_picture ? (
-                    <img 
-                      src={topThree[0].profile_picture} 
-                      alt={topThree[0].name}
-                      className="h-full w-full object-cover" 
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(topThree[0].name)}&background=random`;
-                      }}
-                    />
-                  ) : (
-                    <div className="h-full w-full flex items-center justify-center text-white/30"><UserIcon size={48} /></div>
-                  )}
+                  <ProfileImage 
+                    src={topThree[0].profile_picture} 
+                    alt={topThree[0].name}
+                    className="h-full w-full object-cover" 
+                    size={48}
+                  />
                 </div>
                 <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 h-14 w-14 bg-inspiria-yellow rounded-2xl flex items-center justify-center border-4 border-nss-blue-dark shadow-2xl rotate-12">
                   <Trophy size={28} className="text-nss-blue-dark" />
@@ -158,18 +147,12 @@ export default function AdminLeaderboard() {
             <div className="absolute -top-12 left-1/2 -translate-x-1/2">
               <div className="relative">
                 <div className="h-28 w-28 rounded-4xl bg-gray-100 border-4 border-white shadow-2xl overflow-hidden">
-                  {topThree[2].profile_picture ? (
-                    <img 
-                      src={topThree[2].profile_picture} 
-                      alt={topThree[2].name}
-                      className="h-full w-full object-cover" 
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(topThree[2].name)}&background=random`;
-                      }}
-                    />
-                  ) : (
-                    <div className="h-full w-full flex items-center justify-center text-gray-300"><UserIcon size={32} /></div>
-                  )}
+                  <ProfileImage 
+                    src={topThree[2].profile_picture} 
+                    alt={topThree[2].name}
+                    className="h-full w-full object-cover" 
+                    size={32}
+                  />
                 </div>
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 h-10 w-10 bg-orange-100 rounded-xl flex items-center justify-center border-4 border-white shadow-xl">
                   <Medal size={20} className="text-orange-600" />
@@ -227,20 +210,12 @@ export default function AdminLeaderboard() {
                   <td className="py-10 px-6">
                     <div className="flex items-center gap-5">
                       <div className="h-14 w-14 bg-gray-100 rounded-2xl overflow-hidden border-2 border-white shadow-lg group-hover:scale-110 transition-transform">
-                        {volunteer.profile_picture ? (
-                          <img 
-                            src={volunteer.profile_picture} 
-                            alt={volunteer.name}
-                            className="h-full w-full object-cover" 
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(volunteer.name)}&background=random`;
-                            }}
-                          />
-                        ) : (
-                          <div className="h-full w-full flex items-center justify-center text-gray-300">
-                            <UserIcon size={20} />
-                          </div>
-                        )}
+                        <ProfileImage 
+                          src={volunteer.profile_picture} 
+                          alt={volunteer.name}
+                          className="h-full w-full object-cover" 
+                          size={20}
+                        />
                       </div>
                       <div className="flex flex-col">
                         <span className="text-lg font-black text-gray-900 tracking-tight">{volunteer.name}</span>

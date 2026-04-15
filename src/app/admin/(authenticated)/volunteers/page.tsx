@@ -22,6 +22,7 @@ import {
   Heart,
   XCircle
 } from "lucide-react";
+import { ProfileImage } from "@/components/ui/ProfileImage";
 
 export default function AdminVolunteers() {
   const [volunteers, setVolunteers] = useState<any[]>([]);
@@ -191,20 +192,12 @@ export default function AdminVolunteers() {
                   <td className="py-8 px-8">
                     <div className="flex items-center gap-4">
                       <div className="h-14 w-14 bg-gray-100 rounded-2xl overflow-hidden border-2 border-white shadow-md group-hover:scale-110 transition-transform shrink-0">
-                        {volunteer.profile_picture ? (
-                          <img 
-                            src={volunteer.profile_picture} 
-                            alt={volunteer.name}
-                            className="h-full w-full object-cover" 
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(volunteer.name)}&background=random`;
-                            }}
-                          />
-                        ) : (
-                          <div className="h-full w-full flex items-center justify-center text-gray-300">
-                            <Users size={20} />
-                          </div>
-                        )}
+                        <ProfileImage 
+                          src={volunteer.profile_picture} 
+                          alt={volunteer.name}
+                          className="h-full w-full object-cover" 
+                          size={20}
+                        />
                       </div>
                       <div className="flex flex-col min-w-0">
                         <span className="text-base font-black text-gray-900 tracking-tight">{volunteer.name || "Unnamed"}</span>
@@ -330,20 +323,12 @@ export default function AdminVolunteers() {
                 </div>
                 <div className="absolute -bottom-16 left-0 right-0 flex justify-center">
                   <div className="h-32 w-32 bg-white rounded-4xl p-1.5 shadow-2xl border-4 border-white overflow-hidden group">
-                    {selectedVolunteer.profile_picture ? (
-                      <img 
-                        src={selectedVolunteer.profile_picture} 
-                        alt={selectedVolunteer.name}
-                        className="h-full w-full object-cover rounded-3xl group-hover:scale-110 transition-transform duration-500" 
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(selectedVolunteer.name)}&background=random`;
-                        }}
-                      />
-                    ) : (
-                      <div className="h-full w-full bg-gray-100 rounded-3xl flex items-center justify-center text-gray-300">
-                        <Users size={40} />
-                      </div>
-                    )}
+                    <ProfileImage 
+                      src={selectedVolunteer.profile_picture} 
+                      alt={selectedVolunteer.name}
+                      className="h-full w-full object-cover rounded-3xl group-hover:scale-110 transition-transform duration-500" 
+                      size={40}
+                    />
                   </div>
                 </div>
               </div>

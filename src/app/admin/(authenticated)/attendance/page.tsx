@@ -13,6 +13,7 @@ import {
   ShieldCheck,
   AlertCircle
 } from "lucide-react";
+import { ProfileImage } from "@/components/ui/ProfileImage";
 
 export default function AdminAttendance() {
   const [pending, setPending] = useState<any[]>([]);
@@ -224,20 +225,12 @@ export default function AdminAttendance() {
                       <td className="py-8 px-10">
                         <div className="flex items-center gap-4">
                           <div className="h-12 w-12 rounded-2xl overflow-hidden border-2 border-white shadow-lg group-hover:scale-110 transition-transform bg-gray-100 shrink-0">
-                            {activity.users?.profile_picture ? (
-                              <img 
-                                src={activity.users.profile_picture} 
-                                alt={activity.users.name}
-                                className="h-full w-full object-cover" 
-                                onError={(e) => {
-                                  (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(activity.users.name)}&background=random`;
-                                }}
-                              />
-                            ) : (
-                              <div className="h-full w-full flex items-center justify-center text-gray-300">
-                                <User size={20} />
-                              </div>
-                            )}
+                            <ProfileImage 
+                              src={activity.users?.profile_picture} 
+                              alt={activity.users?.name}
+                              className="h-full w-full object-cover" 
+                              size={20}
+                            />
                           </div>
                           <div className="flex flex-col min-w-0">
                             <span className="text-sm font-black text-gray-900 uppercase tracking-tight truncate">{activity.users?.name}</span>
